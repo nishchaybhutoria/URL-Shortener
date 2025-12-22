@@ -1,7 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"os"
+
+	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/logger"
+	"github.com/joho/godotenv"
+	"github.com/nishchaybhutoria/URL-Shortener/routes"
+)
 
 func main() {
-	fmt.Println("Setup")
+	if err := godotenv.Load(); err != nil {
+		log.Fatal(err)
+	}
+
+	app := fiber.New()
+	app.Use(logger.New())
+
+	setupRoutes(app)
+
+	log.Fatal(app.Listen(os.Getenv("APP_PORT")))
+}
+
+func setupRoutes(app *fiber.App) {
+	app.Get("/:url", routes.ResolveURL)
+	app.Post("/api/v1", routes.ShortenURL)
 }
