@@ -36,7 +36,6 @@ A high-performance, containerized URL shortener API built with Go (Fiber) and Re
 ├── data/               # Persistent storage (mounted volume)
 ├── docker-compose.yml  # Container orchestration
 └── Makefile            # Quick command shortcuts
-
 ```
 
 ## Getting Started
@@ -51,9 +50,8 @@ A high-performance, containerized URL shortener API built with Go (Fiber) and Re
 Clone the repository:
 
 ```bash
-git clone [https://github.com/nishchaybhutoria/URL-Shortener.git](https://github.com/nishchaybhutoria/URL-Shortener.git)
+git clone https://github.com/nishchaybhutoria/URL-Shortener.git
 cd url-shortener
-
 ```
 
 ### 2. Configuration
@@ -62,7 +60,6 @@ Set up your environment variables. An example file is provided in the api direct
 
 ```bash
 cp api/.env.example api/.env
-
 ```
 
 Ensure api/.env contains the following configuration:
@@ -103,7 +100,7 @@ The server will start on http://localhost:3000.
 
 ```json
 {
-  "url": "[https://github.com/nishchaybhutoria](https://github.com/nishchaybhutoria)",
+  "url": "https://github.com/nishchaybhutoria",
   "short": "git",
   "expiry": 24
 }
@@ -117,7 +114,7 @@ The server will start on http://localhost:3000.
 
 ```bash
 curl -X POST -H "Content-Type: application/json" \
--d '{"url": "[https://google.com](https://google.com)", "short": "goo", "expiry": 24}' \
+-d '{"url": "https://google.com", "short": "goo", "expiry": 24}' \
 http://localhost:3000/api/v1
 ```
 
@@ -125,7 +122,7 @@ http://localhost:3000/api/v1
 
 ```json
 {
-  "url": "[https://google.com](https://google.com)",
+  "url": "https://google.com",
   "short": "localhost:3000/goo",
   "expiry": 24,
   "rate_limit": "9",
