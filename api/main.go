@@ -12,7 +12,7 @@ import (
 
 func main() {
 	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
+		log.Println("Note: .env file not found. Relying on System Environment Variables.")
 	}
 
 	app := fiber.New()
